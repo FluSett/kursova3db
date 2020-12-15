@@ -91,13 +91,13 @@ class _LibrarianSignInPageState extends State<LibrarianSignInPage> {
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: height * 0.12),
+            SizedBox(height: height * 0.08),
             Container(
               child: Column(
                 children: [
                   Image.asset(
                     'images/librarian.png',
-                    scale: width * 0.006,
+                    scale: width * 0.016,
                   ),
                   SizedBox(height: height * 0.03),
                   Text(
@@ -107,7 +107,7 @@ class _LibrarianSignInPageState extends State<LibrarianSignInPage> {
                 ],
               ),
             ),
-            SizedBox(height: height * 0.12),
+            SizedBox(height: height * 0.04),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -154,7 +154,7 @@ class _LibrarianSignInPageState extends State<LibrarianSignInPage> {
               onTap: signIn,
               child: Container(
                 width: width * 0.87,
-                height: height * 0.08,
+                height: height * 0.12,
                 padding: EdgeInsets.symmetric(vertical: 13),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(

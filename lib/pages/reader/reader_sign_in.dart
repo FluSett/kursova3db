@@ -90,13 +90,13 @@ class _ReaderSignInPageState extends State<ReaderSignInPage> {
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: height * 0.12),
+            SizedBox(height: height * 0.08),
             Container(
               child: Column(
                 children: [
                   Image.asset(
                     'images/reader.png',
-                    scale: width * 0.00222,
+                    scale: width * 0.0055,
                   ),
                   SizedBox(height: height * 0.03),
                   Text(
@@ -106,7 +106,7 @@ class _ReaderSignInPageState extends State<ReaderSignInPage> {
                 ],
               ),
             ),
-            SizedBox(height: height * 0.12),
+            SizedBox(height: height * 0.04),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -152,7 +152,7 @@ class _ReaderSignInPageState extends State<ReaderSignInPage> {
               onTap: signIn,
               child: Container(
                 width: width * 0.87,
-                height: height * 0.08,
+                height: height * 0.09,
                 padding: EdgeInsets.symmetric(vertical: 13),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -168,7 +168,7 @@ class _ReaderSignInPageState extends State<ReaderSignInPage> {
                 child: Text(
                   'Авторизуватись',
                   style: TextStyle(
-                    fontSize: width * 0.06,
+                    fontSize: width * 0.05,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).accentColor,
                   ),

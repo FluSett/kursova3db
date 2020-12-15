@@ -120,7 +120,7 @@ class _LibrarianSignUpPageState extends State<LibrarianSignUpPage> {
                 children: [
                   Image.asset(
                     'images/librarian.png',
-                    scale: width * 0.006,
+                    scale: width * 0.016,
                   ),
                   SizedBox(height: height * 0.03),
                   Text(
@@ -130,7 +130,7 @@ class _LibrarianSignUpPageState extends State<LibrarianSignUpPage> {
                 ],
               ),
             ),
-            SizedBox(height: height * 0.06),
+            SizedBox(height: height * 0.02),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -139,7 +139,7 @@ class _LibrarianSignUpPageState extends State<LibrarianSignUpPage> {
                 style: TextStyle(fontSize: width * 0.04),
               ),
             ),
-            SizedBox(height: height * 0.037),
+            SizedBox(height: height * 0.017),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -148,7 +148,7 @@ class _LibrarianSignUpPageState extends State<LibrarianSignUpPage> {
                 style: TextStyle(fontSize: width * 0.04),
               ),
             ),
-            SizedBox(height: height * 0.037),
+            SizedBox(height: height * 0.017),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -157,7 +157,7 @@ class _LibrarianSignUpPageState extends State<LibrarianSignUpPage> {
                 style: TextStyle(fontSize: width * 0.04),
               ),
             ),
-            SizedBox(height: height * 0.037),
+            SizedBox(height: height * 0.017),
             Row(
               children: [
                 SizedBox(width: width * 0.15),
@@ -203,8 +203,8 @@ class _LibrarianSignUpPageState extends State<LibrarianSignUpPage> {
             InkWell(
               onTap: signUp,
               child: Container(
-                width: width * 0.87,
-                height: height * 0.08,
+                width: width * 0.67,
+                height: height * 0.09,
                 padding: EdgeInsets.symmetric(vertical: 13),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -220,7 +220,7 @@ class _LibrarianSignUpPageState extends State<LibrarianSignUpPage> {
                 child: Text(
                   'Зареєструватись',
                   style: TextStyle(
-                    fontSize: width * 0.06,
+                    fontSize: width * 0.05,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).accentColor,
                   ),

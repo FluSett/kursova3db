@@ -46,7 +46,7 @@ class _WelcomePageState extends State<WelcomePage> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: height * 0.15),
+          SizedBox(height: height * 0.1),
           Text(
             'Оберіть, щоб продовжити:',
             style: TextStyle(
@@ -70,7 +70,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       Image.asset(
                         'images/librarian.png',
-                        scale: width * 0.006,
+                        scale: width * 0.014,
                       ),
                       SizedBox(height: height * 0.03),
                       Text(
@@ -92,7 +92,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     children: [
                       Image.asset(
                         'images/reader.png',
-                        scale: width * 0.00222,
+                        scale: width * 0.0052,
                       ),
                       SizedBox(height: height * 0.03),
                       Text(

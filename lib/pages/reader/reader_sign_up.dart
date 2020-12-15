@@ -120,17 +120,17 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 children: [
                   Image.asset(
                     'images/reader.png',
-                    scale: width * 0.00222,
+                    scale: width * 0.0062,
                   ),
-                  SizedBox(height: height * 0.03),
+                  SizedBox(height: height * 0.01),
                   Text(
                     'Читач',
-                    style: TextStyle(fontSize: width * 0.055),
+                    style: TextStyle(fontSize: width * 0.045),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: height * 0.04),
+            //SizedBox(height: height * 0.02),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -139,7 +139,7 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 style: TextStyle(fontSize: width * 0.04),
               ),
             ),
-            SizedBox(height: height * 0.03),
+            //SizedBox(height: height * 0.01),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -148,7 +148,7 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 style: TextStyle(fontSize: width * 0.04),
               ),
             ),
-            SizedBox(height: height * 0.03),
+           // SizedBox(height: height * 0.01),
             Row(
               children: [
                 SizedBox(width: width * 0.15),
@@ -175,7 +175,7 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 ),
               ],
             ),
-            SizedBox(height: height * 0.03),
+           // SizedBox(height: height * 0.01),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -188,7 +188,7 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 ],
               ),
             ),
-            SizedBox(height: height * 0.03),
+            //SizedBox(height: height * 0.01),
             Container(
               width: width * 0.7,
               child: TextFormField(
@@ -197,7 +197,7 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 style: TextStyle(fontSize: width * 0.04),
               ),
             ),
-            SizedBox(height: height * 0.03),
+            SizedBox(height: height * 0.01),
             Align(
               alignment: Alignment.topRight,
               child: InkWell(
@@ -217,11 +217,11 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 ),
               ),
             ),
-            SizedBox(height: height * 0.02),
+            SizedBox(height: height * 0.03),
             InkWell(
               onTap: signUp,
               child: Container(
-                width: width * 0.87,
+                width: width * 0.67,
                 height: height * 0.08,
                 padding: EdgeInsets.symmetric(vertical: 13),
                 alignment: Alignment.center,
@@ -238,7 +238,7 @@ class _ReaderSignUpPageState extends State<ReaderSignUpPage> {
                 child: Text(
                   'Зареєструватись',
                   style: TextStyle(
-                    fontSize: width * 0.06,
+                    fontSize: width * 0.05,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).accentColor,
                   ),
