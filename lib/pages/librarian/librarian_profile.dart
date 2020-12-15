@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:kursova/pages/welcome.dart';
 import 'package:http/http.dart' as http;
+import 'package:kursova/widgets/loading.dart';
 
 class LibrarianProfilePage extends StatefulWidget {
   @override
@@ -45,6 +46,21 @@ class _LibrarianProfilePageState extends State<LibrarianProfilePage> {
     var response = await http.post(url, body: data);
 
     return json.decode(response.body);
+  }
+
+  void _removeFormular(String value) async {
+    FocusScope.of(context).requestFocus(FocusNode());
+
+    FullScreenDialogs().showFullScreenLoadingDialog(context);
+
+    var url = "https://dbserverproject.000webhostapp.com/formular/remove.php";
+    var data = {
+      "id": '$value',
+    };
+
+    var res = await http.post(url, body: data);
+
+    Navigator.of(context).pop();
   }
 
   void initState() {
@@ -222,15 +238,19 @@ class _LibrarianProfilePageState extends State<LibrarianProfilePage> {
                                   VerticalDivider(
                                       color: Theme.of(context).hintColor),
                                   SizedBox(width: width * 0.019),
-                                  Container(
-                                    width: width * 0.18,
-                                    height: width * 0.18,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      color: Colors.blueAccent,
+                                  GestureDetector(
+                                    onTap: () => _removeFormular(
+                                        '${_formulars[index]['id']}'),
+                                    child: Container(
+                                      width: width * 0.18,
+                                      height: width * 0.18,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: Colors.blueAccent,
+                                      ),
+                                      child: Icon(Icons.delete,
+                                          size: height * 0.06),
                                     ),
-                                    child:
-                                        Icon(Icons.edit, size: height * 0.06),
                                   ),
                                 ],
                               ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:kursova/pages/formular/formular_search.dart';
+import 'package:kursova/widgets/loading.dart';
 
 class FormularArchivePage extends StatefulWidget {
   @override
@@ -29,6 +30,21 @@ class _FormularArchivePageState extends State<FormularArchivePage> {
         _dataFormulars = json.decode(response.body);
       });
     }
+  }
+
+  void _removeFormular(String value) async {
+    FocusScope.of(context).requestFocus(FocusNode());
+
+    FullScreenDialogs().showFullScreenLoadingDialog(context);
+
+    var url = "https://dbserverproject.000webhostapp.com/formular/remove.php";
+    var data = {
+      "id": '$value',
+    };
+
+    var res = await http.post(url, body: data);
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -103,14 +119,17 @@ class _FormularArchivePageState extends State<FormularArchivePage> {
                       SizedBox(width: width * 0.019),
                       VerticalDivider(color: Theme.of(context).hintColor),
                       SizedBox(width: width * 0.019),
-                      Container(
-                        width: width * 0.18,
-                        height: width * 0.18,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.blueAccent,
+                      GestureDetector(
+                        onTap: () => _removeFormular('${_dataFormulars[index]['id']}'),
+                        child: Container(
+                          width: width * 0.18,
+                          height: width * 0.18,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.blueAccent,
+                          ),
+                          child: Icon(Icons.delete, size: height * 0.06),
                         ),
-                        child: Icon(Icons.delete, size: height * 0.06),
                       ),
                     ],
                   ),
