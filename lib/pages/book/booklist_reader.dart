@@ -1,32 +1,29 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:kursova/pages/formular/formular_search.dart';
+import 'package:kursova/pages/book/take_book.dart';
 
-class FormularArchivePage extends StatefulWidget {
+class BookListReaderPage extends StatefulWidget {
   @override
-  _FormularArchivePageState createState() => _FormularArchivePageState();
+  _BookListReaderPageState createState() => _BookListReaderPageState();
 }
 
-class _FormularArchivePageState extends State<FormularArchivePage> {
-  List _dataFormulars = [];
-
-  TextEditingController _searchController = TextEditingController();
+class _BookListReaderPageState extends State<BookListReaderPage> {
+  List _dataBooks = [];
 
   void initState() {
     super.initState();
-    getFormulars();
+    getBooks();
   }
 
-  void getFormulars() async {
-    var url = "https://dbserverproject.000webhostapp.com/formular/get_info.php";
+  void getBooks() async {
+    var url = "https://dbserverproject.000webhostapp.com/book/get_info.php";
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
       setState(() {
-        _dataFormulars = json.decode(response.body);
+        _dataBooks = json.decode(response.body);
       });
     }
   }
@@ -39,30 +36,19 @@ class _FormularArchivePageState extends State<FormularArchivePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("Архів"),
+        title: Text("Список книг"),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FormularSearchPage()),
-              );
-            },
-            icon: Icon(Icons.search),
-          ),
-        ],
       ),
       body: Center(
         child: ListView.builder(
-          itemCount: _dataFormulars.length,
+          itemCount: _dataBooks.length,
           itemBuilder: (BuildContext context, int index) {
             return Column(
               children: [
                 SizedBox(height: height * 0.032),
                 Container(
                   width: width * 0.9,
-                  height: height * 0.20,
+                  height: height * 0.17,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Theme.of(context).dividerColor,
@@ -74,16 +60,11 @@ class _FormularArchivePageState extends State<FormularArchivePage> {
                         child: Column(
                           children: [
                             SizedBox(height: height * 0.03),
-                            Row(
-                              children: [
-                                Text(
-                                  '${_dataFormulars[index]['id']}       Читач: ${_dataFormulars[index]['reader']}',
-                                  style: TextStyle(
-                                      fontSize: width * 0.05,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(width: width * 0.03),
-                              ],
+                            Text(
+                              '${_dataBooks[index]['id']}    ${_dataBooks[index]['nazva']}',
+                              style: TextStyle(
+                                  fontSize: width * 0.05,
+                                  fontWeight: FontWeight.bold),
                             ),
                             SizedBox(height: height * 0.02),
                             Container(
@@ -93,8 +74,7 @@ class _FormularArchivePageState extends State<FormularArchivePage> {
                             ),
                             SizedBox(height: height * 0.014),
                             Text(
-                              'Книга: ${_dataFormulars[index]['book']}\n\n'
-                              'Бібіліотекар: ${_dataFormulars[index]['librarian']}',
+                              "${_dataBooks[index]['avtor']}              ${_dataBooks[index]['pages']}",
                               style: TextStyle(fontSize: width * 0.034),
                             ),
                           ],
@@ -103,14 +83,21 @@ class _FormularArchivePageState extends State<FormularArchivePage> {
                       SizedBox(width: width * 0.019),
                       VerticalDivider(color: Theme.of(context).hintColor),
                       SizedBox(width: width * 0.019),
-                      Container(
-                        width: width * 0.18,
-                        height: width * 0.18,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.blueAccent,
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TakeBookPage(bookID: '${_dataBooks[index]['id']}', bookNazva: '${_dataBooks[index]['nazva']}', bookAvtor: '${_dataBooks[index]['avtor']}', bookPages: '${_dataBooks[index]['pages']}',)),
                         ),
-                        child: Icon(Icons.delete, size: height * 0.06),
+                        child: Container(
+                          width: width * 0.18,
+                          height: width * 0.18,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.blueAccent,
+                          ),
+                          child: Icon(Icons.add, size: height * 0.06),
+                        ),
                       ),
                     ],
                   ),

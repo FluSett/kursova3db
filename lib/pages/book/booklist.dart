@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:kursova/pages/book/publish_book.dart';
+import 'package:kursova/pages/book/take_book.dart';
 
 class BookListPage extends StatefulWidget {
   @override
@@ -47,7 +49,7 @@ class _BookListPageState extends State<BookListPage> {
                 SizedBox(height: height * 0.032),
                 Container(
                   width: width * 0.9,
-                  height: height * 0.14,
+                  height: height * 0.17,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: Theme.of(context).dividerColor,
@@ -82,14 +84,26 @@ class _BookListPageState extends State<BookListPage> {
                       SizedBox(width: width * 0.019),
                       VerticalDivider(color: Theme.of(context).hintColor),
                       SizedBox(width: width * 0.019),
-                      Container(
-                        width: width * 0.18,
-                        height: width * 0.18,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.blueAccent,
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PublishBookPage(
+                                    bookID: '${_dataBooks[index]['id']}',
+                                    bookNazva: '${_dataBooks[index]['nazva']}',
+                                    bookAvtor: '${_dataBooks[index]['avtor']}',
+                                    bookPages: '${_dataBooks[index]['pages']}',
+                                  )),
                         ),
-                        child: Icon(Icons.add, size: height * 0.06),
+                        child: Container(
+                          width: width * 0.18,
+                          height: width * 0.18,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.blueAccent,
+                          ),
+                          child: Icon(Icons.add, size: height * 0.06),
+                        ),
                       ),
                     ],
                   ),

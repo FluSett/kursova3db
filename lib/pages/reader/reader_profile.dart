@@ -78,7 +78,7 @@ class _ReaderProfilePageState extends State<ReaderProfilePage> {
                         children: [
                           Image.asset(
                             'images/reader.png',
-                            scale: width * 0.00222,
+                            scale: width * 0.0052,
                           ),
                           SizedBox(height: height * 0.03),
                           Text(
@@ -179,7 +179,7 @@ class _ReaderProfilePageState extends State<ReaderProfilePage> {
                             SizedBox(height: height * 0.032),
                             Container(
                               width: width * 0.9,
-                              height: height * 0.14,
+                              height: height * 0.17,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
                                 color: Theme.of(context).dividerColor,
@@ -223,7 +223,7 @@ class _ReaderProfilePageState extends State<ReaderProfilePage> {
                                       borderRadius: BorderRadius.circular(30),
                                       color: Colors.blueAccent,
                                     ),
-                                    child: Icon(Icons.add, size: height * 0.06),
+                                    child: Icon(Icons.book, size: height * 0.06),
                                   ),
                                 ],
                               ),

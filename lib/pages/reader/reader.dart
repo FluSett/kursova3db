@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:kursova/pages/book/booklist.dart';
+import 'package:kursova/pages/book/booklist_reader.dart';
 import 'package:kursova/pages/reader/reader_profile.dart';
 
 class ReaderPage extends StatefulWidget {
@@ -12,12 +12,12 @@ class _ReaderPageState extends State<ReaderPage> {
   GlobalKey _bottomNavigationKey = GlobalKey();
   int _page = 0;
 
-  Widget _currentPage = BookListPage();
+  Widget _currentPage = BookListReaderPage();
 
   Widget _pageChooser() {
     switch (_page) {
       case 0:
-        return BookListPage();
+        return BookListReaderPage();
       case 1:
         return ReaderProfilePage();
       default:

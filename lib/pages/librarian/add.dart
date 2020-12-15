@@ -39,11 +39,11 @@ class _AddPageState extends State<AddPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(height * 0.3757),
+        preferredSize: Size.fromHeight(height * 0.3657),
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: height * 0.16),
+              SizedBox(height: height * 0.06),
               Container(
                 padding: EdgeInsets.only(
                     top: height * 0.045,

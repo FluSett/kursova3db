@@ -78,7 +78,7 @@ class _LibrarianProfilePageState extends State<LibrarianProfilePage> {
                         children: [
                           Image.asset(
                             'images/librarian.png',
-                            scale: width * 0.006,
+                            scale: width * 0.014,
                           ),
                           SizedBox(height: height * 0.03),
                           Text(
@@ -176,10 +176,10 @@ class _LibrarianProfilePageState extends State<LibrarianProfilePage> {
                       itemBuilder: (BuildContext context, int index) {
                         return Column(
                           children: [
-                            SizedBox(height: height * 0.032),
+                            SizedBox(height: height * 0.022),
                             Container(
                               width: width * 0.9,
-                              height: height * 0.18,
+                              height: height * 0.20,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
                                 color: Theme.of(context).dividerColor,

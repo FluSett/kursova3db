@@ -102,7 +102,7 @@ class _FormularSearchPageState extends State<FormularSearchPage> {
                       SizedBox(height: height * 0.032),
                       Container(
                         width: width * 0.9,
-                        height: height * 0.18,
+                        height: height * 0.20,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: Theme.of(context).dividerColor,
