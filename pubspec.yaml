@@ -1,0 +1,32 @@
+name: kursova
+description: A new Flutter project.
+version: 1.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  path: ^1.7.0
+  path_provider:
+  http: ^0.12.2
+  hive: ^1.4.4+1
+  hive_flutter: ^0.3.1
+  curved_navigation_bar: ^0.3.4
+  build_runner:
+
+  cupertino_icons: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - images/librarian.png
+    - images/reader.png

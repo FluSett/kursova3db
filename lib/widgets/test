@@ -1,0 +1,157 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+import 'package:kursova/db/get_info.dart';
+import 'package:kursova/models/book.dart';
+import 'package:http/http.dart' as http;
+
+class BookListPage extends StatefulWidget {
+  @override
+  _BookListPageState createState() => _BookListPageState();
+}
+
+class _BookListPageState extends State<BookListPage> {
+  List<Book> _books;
+  List _dataBooks = List();
+
+  void initState() {
+    super.initState();
+    getBooks();
+  }
+
+  void getBooks() async{
+    var response = await http.get("https://dbserverproject.000webhostapp.com/book/get_info.php");
+    
+    if(response.statusCode == 200) {
+      setState(() {
+      _dataBooks = json.decode(response.body);
+    });}
+
+    print(_dataBooks);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        title: Text("Список книг"),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height: height * 0.05),
+              FutureBuilder(
+                future: fetchBook(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    _books = snapshot.data;
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: DataTable(
+                        columns: <DataColumn>[
+                          DataColumn(
+                            label: Text(
+                              'id',
+                              style: TextStyle(
+                                fontSize: width * 0.04,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Назва',
+                              style: TextStyle(
+                                fontSize: width * 0.04,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Автор',
+                              style: TextStyle(
+                                fontSize: width * 0.04,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                          DataColumn(
+                            label: Text(
+                              'Сторінок',
+                              style: TextStyle(
+                                fontSize: width * 0.04,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                        ],
+                        rows: _books
+                            .map(
+                              (_data) => DataRow(cells: [
+                                DataCell(
+                                  Text(
+                                    _data.id,
+                                    style: TextStyle(
+                                      fontSize: height * 0.017,
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                ),
+                                DataCell(
+                                  Text(
+                                    _data.nazva.toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: height * 0.017,
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                ),
+                                DataCell(
+                                  Text(
+                                    _data.avtor.toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: height * 0.017,
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                ),
+                                DataCell(
+                                  Text(
+                                    _data.pages.toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: height * 0.017,
+                                    ),
+                                  ),
+                                  onTap: () {},
+                                ),
+                              ]),
+                            )
+                            .toList(),
+                      ),
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
+              ),
+              ListView.builder(
+                itemCount: _dataBooks.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Text(_dataBooks[index]['nazva']);
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
